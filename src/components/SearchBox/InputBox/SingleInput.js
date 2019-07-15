@@ -1,22 +1,23 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as S from './styledComponents'
 
-const SingleInput = ({handleCharChange, userInput, index}) => { 
-    const inputRef = useRef();  
-      useEffect(()=>{
-         if(userInput.length === index){
-            inputRef.current.focus();
-         }
-      },[userInput])
-    return ( 
-         <S.OneChar 
-            ref={inputRef}
-            disabled={!(userInput.length === index)}
-            focused={(userInput.length === index)} 
-            value={userInput[index] ? userInput[index] : '' } 
-            onChange={({target:{value}}) => handleCharChange({char:value,index})}
-         />
-     );
+const SingleInput = ({ index, currentIndex, setCurrentIndex, replaceCharUserInput, userInput }) => {
+   const inputRef = useRef();
+   useEffect(() => {
+      if (currentIndex === index){
+         inputRef.current.focus();
+      }
+}, [currentIndex])
+   return (
+      <S.OneChar
+         ref={inputRef}
+         value={userInput[index]}
+         onChange={({target:{value}}) => {
+            replaceCharUserInput(value[value.length - 1], index)
+         } }
+         onFocus={() => setCurrentIndex(index)}
+      />
+   );
 }
- 
+
 export default SingleInput;

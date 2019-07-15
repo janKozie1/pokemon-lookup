@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 
 export let InputContainer = styled.div`
     display:flex;
@@ -28,6 +28,21 @@ export let InputContainer = styled.div`
     }
 `
 
+let blink = keyframes`
+    0%{
+        border-color:black;
+    }
+    49.9999%{
+        border-color:black;
+    }
+    50%{
+        border-color:white;
+    }
+    99.9999%{
+        border-color:white;
+    }
+`
+
 export let OneChar = styled.input`
     width:30px;
     text-align:center;
@@ -37,13 +52,15 @@ export let OneChar = styled.input`
     border:0;
     color: transparent;
     text-shadow: 0 0 0 black;
-    padding-bottom: ${props => props.focused ? '10px':'0px'};
-    border-bottom:5px solid black;
+    border-bottom:5px solid rgba(0,0,0,1);
     margin-right:10px;
     &:focus{
         outline:none;
+        padding-bottom:10px;
+        animation:${blink} 1s linear infinite;
     }
     &:disabled{
         background:white;
     }
 `
+

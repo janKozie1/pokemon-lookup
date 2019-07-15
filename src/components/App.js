@@ -7,7 +7,10 @@ import * as S from './styledComponents'
 
 
 class App extends Component {
-    state = {  }
+    state = { 
+        pokemon:{}
+    }
+    
     render() { 
         return ( 
             <>
