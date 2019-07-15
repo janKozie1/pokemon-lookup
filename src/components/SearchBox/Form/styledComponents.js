@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components'
 
-export let InputContainer = styled.div`
+export let InputContainer = styled.form`
     display:flex;
     align-items:flex-start;
     justify-content:center;
@@ -53,10 +53,12 @@ export let OneChar = styled.input`
     color: transparent;
     text-shadow: 0 0 0 black;
     border-bottom:5px solid rgba(0,0,0,1);
+    padding-bottom:5px;
     margin-right:10px;
+    user-select:none;
     &:focus{
         outline:none;
-        padding-bottom:10px;
+        padding-bottom:15px;
         animation:${blink} 1s linear infinite;
     }
     &:disabled{

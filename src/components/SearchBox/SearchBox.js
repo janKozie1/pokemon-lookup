@@ -1,11 +1,14 @@
 import React from 'react';
-import InputBox from './InputBox/InputBox'
+import Form from './Form/Form'
 import * as S from './styledComponents'
 let SearchBox = () =>{
+    let onFormSubmit = (value) =>{
+        console.log(value)
+    }
     return (
         <S.SearchBox>
             <h1>Find that <span>Pokémon</span>!</h1>
-            <InputBox />
+            <Form onFormSubmit={onFormSubmit} />
         </S.SearchBox>
     )
 }
