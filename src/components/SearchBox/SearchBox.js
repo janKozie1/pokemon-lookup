@@ -3,7 +3,14 @@ import Form from './Form/Form'
 import * as S from './styledComponents'
 let SearchBox = () =>{
     let onFormSubmit = (value) =>{
-        console.log(value)
+        console.log("?")
+        fetch(`http://127.0.0.1:8080/getPokemon`,{
+           method:"POST",
+           headers:{
+               'Content-Type':'application/json'
+           },
+           body:JSON.stringify({query:value.trim()}) 
+        }).then(e => e.json()).then(console.log)
     }
     return (
         <S.SearchBox>

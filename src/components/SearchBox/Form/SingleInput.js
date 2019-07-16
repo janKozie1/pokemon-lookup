@@ -7,7 +7,7 @@ const SingleInput = ({ index, currentIndex, handleIndexChange, replaceCharUserIn
       if (currentIndex === index){
          inputRef.current.focus();
       }
-}, [currentIndex])
+}, [currentIndex, index])
    return (
       <S.OneChar
          ref={inputRef}
@@ -16,7 +16,9 @@ const SingleInput = ({ index, currentIndex, handleIndexChange, replaceCharUserIn
            handleSpecialKey(key)
          }}
          onChange={({target:{value}}) => {
-            replaceCharUserInput(value[value.length - 1], index)
+            let temp = value.trim();
+            temp = temp[temp.length-1]
+            replaceCharUserInput(temp, index)
          }}
          onFocus={() => handleIndexChange(index)}
       />

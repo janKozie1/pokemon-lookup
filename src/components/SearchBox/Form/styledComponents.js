@@ -4,6 +4,7 @@ export let InputContainer = styled.form`
     display:flex;
     align-items:flex-start;
     justify-content:center;
+    width:50%;
     margin-top:40px;
     height:100px;
     position:relative;
@@ -44,9 +45,10 @@ let blink = keyframes`
 `
 
 export let OneChar = styled.input`
-    width:30px;
-    text-align:center;
+    width:10%;
+    margin-right:10px;
     font-size:30px;
+    text-align:center;
     font-family:inherit;
     padding:0 1px;
     border:0;

@@ -23,12 +23,16 @@ const Form = ({ onFormSubmit }) => {
             case 'enter':
                 onFormSubmit(userInput)
                 break;
+            default:
+                break;
         }
 
     }
 
     let replaceCharUserInput = (char, index) => {
+        console.log(char)
         if (char) {
+            
             setUserInput(changeCharAtIndex(userInput,char,index))
             handleIndexChange(index + 1)
         } else {
