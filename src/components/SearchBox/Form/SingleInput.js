@@ -11,7 +11,7 @@ const SingleInput = ({ index, currentIndex, handleIndexChange, replaceCharUserIn
    return (
       <S.OneChar
          ref={inputRef}
-         value={userInput[index]}
+         value={userInput[index]}         
          onKeyUp={({key})=>{
            handleSpecialKey(key)
          }}
