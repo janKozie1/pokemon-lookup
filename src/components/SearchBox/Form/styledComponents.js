@@ -1,14 +1,13 @@
 import styled, {keyframes} from 'styled-components'
 
-export let InputContainer = styled.form`
+export let Form = styled.form`
     display:flex;
     align-items:flex-start;
     justify-content:center;
-    width:50%;
-    margin-top:40px;
-    height:100px;
+    
     position:relative;
-    &::after{
+    margin-top:10px;
+    /* &::after{
         content:'';
         height:20px;
         width:10px;
@@ -26,7 +25,7 @@ export let InputContainer = styled.form`
         top:9px;
         transform:rotate(-45deg);
         position:absolute;
-    }
+    } */
 `
 
 let blink = keyframes`
@@ -43,24 +42,30 @@ let blink = keyframes`
         border-color:white;
     }
 `
-
-export let OneChar = styled.input`
-    width:10%;
+export let HiddenInput = styled.input`
+    position:absolute;
+    z-index:1;
+    bottom:0;
+    transform:scale(0);
+`
+export let OneChar = styled.p`
+    background:white;
+    height:50px;
+    width:30px;
+    margin:0;
     margin-right:10px;
-    font-size:30px;
-    text-align:center;
-    font-family:inherit;
-    padding:0 1px;
+    font-size:25px;
     border:0;
-    color: transparent;
-    text-shadow: 0 0 0 black;
     border-bottom:5px solid rgba(0,0,0,1);
     padding-bottom:5px;
-    margin-right:10px;
-    user-select:none;
-    &:focus{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:10;
+    &:last-of-type{
         outline:none;
-        padding-bottom:15px;
         animation:${blink} 1s linear infinite;
     }
     &:disabled{

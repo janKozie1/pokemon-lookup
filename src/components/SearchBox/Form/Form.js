@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SingleInput from './SingleInput'
+import Input from './Input'
 import * as S from './styledComponents'
 
 const FIELDS_COUNT = 16;
@@ -60,21 +60,9 @@ const Form = ({ onFormSubmit }) => {
     }
 
     return (
-        <S.InputContainer onSubmit={() => onFormSubmit(userInput)}>
-            {
-                new Array(FIELDS_COUNT).fill('').map((e, index) => {
-                    return <SingleInput
-                        key={index}
-                        handleIndexChange={handleIndexChange}
-                        index={index}
-                        currentIndex={currentIndex}
-                        replaceCharUserInput={replaceCharUserInput}
-                        userInput={userInput}
-                        handleSpecialKey={handleSpecialKey}
-                    />
-                })
-            }
-        </S.InputContainer>
+        <S.Form onSubmit={() => onFormSubmit(userInput)}>
+            <Input />
+        </S.Form>
     );
 }
 
