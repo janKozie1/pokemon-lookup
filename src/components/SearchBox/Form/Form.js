@@ -2,17 +2,62 @@ import React, { useState } from 'react';
 import Input from './Input/Input'
 import * as S from './styledComponents'
 
-const FIELDS_COUNT = 16;
 
 const Form = ({ onFormSubmit }) => {
-    let [userInput, setUserInput] = useState(" ".repeat(FIELDS_COUNT));
+    let [userInput, setUserInput] = useState("");
     let [currentIndex, setCurrentIndex] = useState(0);
+    
+    let updateInput = (eventType, payload) => {
+        if(eventType === 'user_input'){
+            console.log(payload, userInput)
+            if(payload.value.length < userInput.length){
+                setUserInput(payload.value)
+                setCurrentIndex(getSafeNewIndex(currentIndex-1))
+              
+            }else if(payload.value.length > userInput.length){
+                setUserInput(payload.value)
+                setCurrentIndex(getSafeNewIndex(currentIndex+1))
+                
+            }
+            
+            
+            
+        }else if(eventType === 'user_keypress'){
+            switch(payload.key){
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                    setCurrentIndex(getSafeNewIndex(currentIndex-1))
+                    break;
+                case 'ArrowdDown':
+                case 'ArrowRight':
+                    setCurrentIndex(getSafeNewIndex(currentIndex+1))
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
+    let getSafeNewIndex = (newIndex) => {
+        if(newIndex > userInput.length - 1 ){
+            return newIndex - 1;
+        }else if(newIndex < 0){
+            return 0;
+        }else {
+            return newIndex;
+        }
+    }
     return (
         <S.Form onSubmit={(e) => onFormSubmit(e,userInput)}>
             <S.FormHeader>Find that <span>Pokémon</span>!</S.FormHeader>
-            <Input />
-            <S.Submit type='submit'>FIND</S.Submit>
+            <Input 
+                currentIndex={currentIndex} 
+                userInput={userInput} 
+                updateInput={updateInput}
+            />
+            <S.SubmitWrapper >
+                <S.Submit type='submit'>FIND</S.Submit>   
+            </S.SubmitWrapper>
         </S.Form>
     );
 }

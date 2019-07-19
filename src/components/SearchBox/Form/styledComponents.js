@@ -34,6 +34,15 @@ export let FormHeader = styled.h1`
     
 `
 
+export let SubmitWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:200px;
+    background:white;
+    overflow:hidden;
+`
+
 export let Submit = styled.button`
     font-family:inherit;
     background:white;
@@ -53,18 +62,17 @@ export let Submit = styled.button`
         background:url(${pokeball});
         background-size:contain;
         top:50%;
-        opacity:0;
         transition:transform 0.5s ease-in;
-
+        
     }
     &::before{
         left:0%;
-        transform:translate(-300%,-50%) rotate(180deg);
+        transform:translate(-380%,-50%) rotate(180deg);
         
     }
     &::after{
         right:0%;
-        transform:translate(300%,-50%) rotate(-180deg);
+        transform:translate(380%,-50%) rotate(-180deg);
     }
     &:hover{
         &::before{

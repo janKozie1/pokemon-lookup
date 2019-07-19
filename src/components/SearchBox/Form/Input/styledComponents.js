@@ -1,29 +1,22 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 let blink = keyframes`
-    0%{
-        border-color:black;
-    }
-    49.9999%{
-        border-color:black;
-    }
-    50%{
+    0%, 49.9999%{
         border-color:white;
     }
-    99.9999%{
-        border-color:white;
+    50%,99.9999%{
+        border-color:black;
     }
 `
 
 export let InputContainer = styled.div`
     position:relative;
-    
     display:flex;
-    align-items:center;
+    align-content:space-around;
     justify-content:center;
     flex-wrap:wrap;
     max-width:70%;
-   
+    height:120px;
     
 `
 export let HiddenInput = styled.input`
@@ -37,23 +30,21 @@ export let OneChar = styled.p`
     background:white;
     height:30px;
     width:30px;
-    margin:10px 0;
+    margin:0;
     margin-right:10px;
-
-    
     font-size:25px;
     border:0;
+
     border-bottom:5px solid rgba(0,0,0,1);
     position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-
+    outline:none;
+    ${({isFocused}) => isFocused && css`
+        animation: ${blink} 1s linear infinite -1s;
+    `}
     z-index:10;
-    &:last-of-type{
-        outline:none;
-        animation:${blink} 1s linear infinite;
-    }
     &:disabled{
         background:white;
     }
@@ -69,5 +60,8 @@ export let OneChar = styled.p`
             clip-path:polygon(0% 0% , 50% 0% , 100% 50%, 50% 100% , 0% 100%);
             transform:translate(-150%,-50%);
         }
+    }
+    &:nth-of-type(16){
+        display:none;
     }
 `

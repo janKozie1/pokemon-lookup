@@ -1,19 +1,28 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as S from './styledComponents'
 
-const Input = () => {
-   let [userInput, setUserInput] = useState('')
+const Input = ({ userInput, updateInput, currentIndex }) => {
    const inputRef = useRef();
-   useEffect(()=>{
+   useEffect(() => {
       inputRef.current.focus();
-   },[inputRef])
+   }, [inputRef])
    return (
       <S.InputContainer>
          {
-            userInput.split("").map((e,i)=><S.OneChar key={i}>{e}</S.OneChar>)
+            userInput.split("").map((e, i) => {
+               return <S.OneChar isFocused={currentIndex === i} key={i}>{e}</S.OneChar>
+            })
          }
-         <S.OneChar />
-         <S.HiddenInput maxLength='15' ref={inputRef} value={userInput} onChange={({ target: { value } }) => setUserInput(value)} onBlur={()=>inputRef.current.focus()} />
+         <S.OneChar isFocused={currentIndex === userInput.length}  />
+         <S.HiddenInput
+            maxLength='14'
+            ref={inputRef}
+            value={userInput}
+            onChange={({ target: { value } }) => updateInput('user_input', { value })}
+            onKeyUp={({ key }) => updateInput('user_keypress', { key })}
+            onBlur={() => inputRef.current.focus()}
+
+         />
       </S.InputContainer>
    );
 }
