@@ -2,8 +2,8 @@ import React from 'react';
 import Form from './Form/Form'
 import * as S from './styledComponents'
 let SearchBox = () =>{
-    let onFormSubmit = (value) =>{
-        console.log("?")
+    let onFormSubmit = (e, value) =>{
+        e.preventDefault();
         fetch(`http://127.0.0.1:8080/getPokemon`,{
            method:"POST",
            headers:{

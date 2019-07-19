@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export let GlobalStyle = createGlobalStyle`
     body{
@@ -8,13 +8,18 @@ export let GlobalStyle = createGlobalStyle`
         padding:0;
         box-sizing:border-box;
         background:#fffafa ;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+       
         >*{
             margin:0;
             padding:0;
             box-sizing:border-box;
+        }
+        #root{
+            min-height:100vh;
+            width:100vw;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
     }
 `

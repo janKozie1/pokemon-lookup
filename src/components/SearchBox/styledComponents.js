@@ -7,11 +7,19 @@ export let SearchBox = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
-    max-width:100vw;
-    justify-content:center;
+    width:100vw;
+    justify-content:space-between;
+   
     h1{
         text-align:center;
         font-size:1em;
+        margin-bottom:50px;
+        transition:margin-bottom 0.5s ease-in-out;
+        @media only screen and (max-width:577px) {
+            margin-bottom:150px;
+            line-height:50px;
+           
+        }
         span{
             color:#F44336;
         }

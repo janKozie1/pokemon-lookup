@@ -8,13 +8,13 @@ const Input = () => {
       inputRef.current.focus();
    },[inputRef])
    return (
-      <>
+      <S.InputContainer>
          {
             userInput.split("").map((e,i)=><S.OneChar key={i}>{e}</S.OneChar>)
          }
          <S.OneChar />
-         <S.HiddenInput ref={inputRef} value={userInput} onChange={({ target: { value } }) => setUserInput(value)} onBlur={()=>inputRef.current.focus()} />
-      </>
+         <S.HiddenInput maxLength='15' ref={inputRef} value={userInput} onChange={({ target: { value } }) => setUserInput(value)} onBlur={()=>inputRef.current.focus()} />
+      </S.InputContainer>
    );
 }
 
