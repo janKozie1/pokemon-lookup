@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePrevious } from '../../../logic/hooks'
 import Input from './Input/Input'
 import * as S from './styledComponents'
 
@@ -6,31 +7,27 @@ import * as S from './styledComponents'
 const Form = ({ onFormSubmit }) => {
     let [userInput, setUserInput] = useState("");
     let [currentIndex, setCurrentIndex] = useState(0);
-    
+    let prev = usePrevious(userInput);
+    useEffect(() => {
+        console.log(prev,userInput)
+        if (prev ||  userInput) {
+            prev.length < userInput.length ? setCurrentIndex(currentIndex + 1) : setCurrentIndex(currentIndex - 1)
+        }
+    }, [userInput])
+
     let updateInput = (eventType, payload) => {
-        if(eventType === 'user_input'){
-            console.log(payload, userInput)
-            if(payload.value.length < userInput.length){
+        if (eventType === 'user_input') {
+            console.log(payload)
                 setUserInput(payload.value)
-                setCurrentIndex(getSafeNewIndex(currentIndex-1))
-              
-            }else if(payload.value.length > userInput.length){
-                setUserInput(payload.value)
-                setCurrentIndex(getSafeNewIndex(currentIndex+1))
-                
-            }
-            
-            
-            
-        }else if(eventType === 'user_keypress'){
-            switch(payload.key){
+        } else if (eventType === 'user_keypress') {
+            switch (payload.key) {
                 case 'ArrowUp':
                 case 'ArrowLeft':
-                    setCurrentIndex(getSafeNewIndex(currentIndex-1))
+                    setCurrentIndex(getSafeNewIndex(currentIndex - 1))
                     break;
                 case 'ArrowdDown':
                 case 'ArrowRight':
-                    setCurrentIndex(getSafeNewIndex(currentIndex+1))
+                    setCurrentIndex(getSafeNewIndex(currentIndex + 1))
                     break;
                 default:
                     break;
@@ -39,24 +36,24 @@ const Form = ({ onFormSubmit }) => {
     }
 
     let getSafeNewIndex = (newIndex) => {
-        if(newIndex > userInput.length - 1 ){
+        if (newIndex > userInput.length - 1) {
             return newIndex - 1;
-        }else if(newIndex < 0){
+        } else if (newIndex < 0) {
             return 0;
-        }else {
+        } else {
             return newIndex;
         }
     }
     return (
-        <S.Form onSubmit={(e) => onFormSubmit(e,userInput)}>
+        <S.Form onSubmit={(e) => onFormSubmit(e, userInput)}>
             <S.FormHeader>Find that <span>Pokémon</span>!</S.FormHeader>
-            <Input 
-                currentIndex={currentIndex} 
-                userInput={userInput} 
+            <Input
+                currentIndex={currentIndex}
+                userInput={userInput}
                 updateInput={updateInput}
             />
             <S.SubmitWrapper >
-                <S.Submit type='submit'>FIND</S.Submit>   
+                <S.Submit type='submit'>FIND</S.Submit>
             </S.SubmitWrapper>
         </S.Form>
     );
