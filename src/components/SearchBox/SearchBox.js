@@ -13,10 +13,7 @@ let SearchBox = () =>{
         }).then(e => e.json()).then(console.log)
     }
     return (
-        <S.SearchBox>
-            <h1>Find that <span>Pokémon</span>!</h1>
-            <Form onFormSubmit={onFormSubmit} />
-        </S.SearchBox>
+        <Form onFormSubmit={onFormSubmit} />
     )
 }
 

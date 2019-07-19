@@ -1,86 +1,80 @@
-import styled, { keyframes } from 'styled-components'
-
+import styled from 'styled-components'
+import pokeball from '../../../assets/images/pokeball.png'
 export let Form = styled.form`
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+    font-family:'Press Start 2P';
     display:flex;
-    align-items:flex-start;
-    justify-content:center;
+    align-items:center;
+    justify-content:space-around;
     position:relative;
-    @media only screen and (max-width:860px) {
+    flex-direction:column;
+    flex:1;
+    width:100vw;
+    height:300px;
+    transition:height 0.5s ease-in-out;
+    @media only screen and (max-width:577px) {
         width:70%;
+        height:600px;
     }
 `
 
-let blink = keyframes`
-    0%{
-        border-color:black;
-    }
-    49.9999%{
-        border-color:black;
-    }
-    50%{
-        border-color:white;
-    }
-    99.9999%{
-        border-color:white;
-    }
-`
-export let InputContainer = styled.div`
-    position:relative;
-    
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    max-width:100%;
-   
-    
-`
-export let HiddenInput = styled.input`
-    position:absolute;
-    z-index:1;
-    bottom:0;
-    transform:scale(0);
-`
-export let OneChar = styled.p`
-    transition:all 0.5s ease-in-out;
-    background:white;
-    height:100%;
-    width:30px;
+export let FormHeader = styled.h1`
+
+    text-align:center;
+    font-size:2em;
     margin:0;
-    margin-right:10px;
-    min-height:30px;
-    margin-bottom:10px;
-    font-size:25px;
-    border:0;
-    border-bottom:5px solid rgba(0,0,0,1);
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    z-index:10;
-    &:last-of-type{
-        outline:none;
-        animation:${blink} 1s linear infinite;
+    transition:margin-bottom 0.5s ease-in-out;
+    @media only screen and (max-width:577px) {
+        line-height:50px;
+        
     }
-    &:disabled{
-        background:white;
+    span{
+        color:#F44336;
     }
-    &:first-of-type{
-        &::before{
-            content:'';
-            width:25px;
-            height:18px;
-            position:absolute;
-            background:black;
-            left:0px;
-            top:50%;
-            clip-path:polygon(0% 0% , 50% 0% , 100% 50%, 50% 100% , 0% 100%);
-            transform:translate(-150%,-50%);
-        }
-    }
+    
 `
 
 export let Submit = styled.button`
+    font-family:inherit;
+    background:white;
+    border:5px solid black;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    position:relative;
+    cursor:pointer;
+    &::before, &::after{
+        position:absolute;
+        content:'';
+        height:24px;
+        width:24px;
+        background:url(${pokeball});
+        background-size:contain;
+        top:50%;
+        opacity:0;
+        transition:transform 0.5s ease-in;
+
+    }
+    &::before{
+        left:0%;
+        transform:translate(-300%,-50%) rotate(180deg);
+        
+    }
+    &::after{
+        right:0%;
+        transform:translate(300%,-50%) rotate(-180deg);
+    }
+    &:hover{
+        &::before{
+            opacity:1;
+            transform:translate(-190%,-50%) rotate(360deg)
+        }
+        &::after{
+            opacity:1;
+            transform:translate(190%,-50%)  rotate(-360deg)
+        }
+    }
 
 `

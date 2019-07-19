@@ -8,12 +8,12 @@ export let SearchBox = styled.div`
     flex-direction:column;
     align-items:center;
     width:100vw;
-    justify-content:space-between;
-   
+    justify-content:space-around;
+   height:300px;
     h1{
         text-align:center;
         font-size:1em;
-        margin-bottom:50px;
+        margin:0;
         transition:margin-bottom 0.5s ease-in-out;
         @media only screen and (max-width:577px) {
             margin-bottom:150px;
