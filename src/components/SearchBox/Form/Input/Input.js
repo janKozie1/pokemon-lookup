@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as S from './styledComponents'
 
-const Input = ({ userInput, updateInput, currentIndex }) => {
+const Input = ({ userInput, updateInput, currentIndex, onKeyPressed }) => {
    const inputRef = useRef();
    useEffect(() => {
       inputRef.current.focus();
@@ -13,13 +13,14 @@ const Input = ({ userInput, updateInput, currentIndex }) => {
                return <S.OneChar isFocused={currentIndex === i} key={i}>{e}</S.OneChar>
             })
          }
-         <S.OneChar isFocused={currentIndex === userInput.length}  />
+         <S.OneChar isFocused={currentIndex === userInput.length} />
          <S.HiddenInput
             maxLength='14'
             ref={inputRef}
             value={userInput}
             onChange={({ target: { value } }) => updateInput('user_input', { value })}
-            onKeyUp={({ key }) => updateInput('user_keypress', { key })}
+            onKeyUp={({ key }) => updateInput('user_keypress', { key,owo:inputRef.current.selectionStart })}
+            onKeyDown={({ key }) => onKeyPressed(key)}
             onBlur={() => inputRef.current.focus()}
 
          />

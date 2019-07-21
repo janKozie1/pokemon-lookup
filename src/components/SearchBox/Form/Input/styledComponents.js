@@ -23,7 +23,7 @@ export let HiddenInput = styled.input`
     position:absolute;
     z-index:1;
     bottom:0;
-    transform:scale(0);
+    
 `
 export let OneChar = styled.p`
     transition:all 0.5s ease-in-out;
