@@ -13,12 +13,11 @@ const Form = ({ onFormSubmit }) => {
     }, [userInput])
 
     let updateInput = (eventType,payload) => {
-        console.log(payload.index)
+    
         if (eventType === 'user_input') {
-            if(payload.value.slice(0,prev.length) !== prev){
-                console.log(payload)
-                console.log(userInput,payload.value[payload.index - 1],payload.index -1)
-                setUserInput(replaceChar(userInput,payload.value[payload.index - 1 ] ,payload.index -1))
+            if(payload.value.slice(0,prev.length) !== prev && payload.value.length > prev.length){
+                setUserInput(replaceChar(userInput,payload.value[payload.index - 1 ] ,payload.index -1));
+                setCurrentIndex(payload.index);   
             }else{
                 setUserInput(payload.value)
                 setCurrentIndex(payload.index)
@@ -28,16 +27,6 @@ const Form = ({ onFormSubmit }) => {
             setCurrentIndex(payload.index)
         }
     }
-
-    // let getSafeNewIndex = (newIndex) => {
-    //     if (newIndex > userInput.length) {
-    //         return newIndex - 1;
-    //     } else if (newIndex < 0) {
-    //         return 0;
-    //     } else {
-    //         return newIndex;
-    //     }
-    // }
     let replaceChar = (string, char, index) => {
         return string.slice(0,index) + char + string.slice(index+1,string.length)
     }
