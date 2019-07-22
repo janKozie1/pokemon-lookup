@@ -44,6 +44,9 @@ export let OneChar = styled.p`
     ${({isFocused}) => isFocused && css`
         animation: ${blink} 1s linear infinite -1s;
     `}
+    ${({hidden}) => hidden && css`
+        display:none;
+    `}
     z-index:10;
     &:disabled{
         background:white;

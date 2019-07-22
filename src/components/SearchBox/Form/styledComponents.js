@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled,{keyframes, css} from 'styled-components'
 import pokeball from '../../../assets/images/pokeball.png'
 export let Form = styled.form`
     @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
@@ -40,7 +40,7 @@ export let SubmitWrapper = styled.div`
     justify-content:center;
     width:200px;
     background:white;
-    overflow:hidden;
+  
 `
 
 export let Submit = styled.button`
@@ -54,6 +54,9 @@ export let Submit = styled.button`
     font-size:0.8rem;
     position:relative;
     cursor:pointer;
+    
+    
+
     &::before, &::after{
         position:absolute;
         content:'';
@@ -73,6 +76,9 @@ export let Submit = styled.button`
     &::after{
         right:0%;
         transform:translate(380%,-50%) rotate(-180deg);
+    }
+    &:active{
+        transform:translateY(10px);
     }
     &:hover{
         &::before{
