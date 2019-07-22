@@ -10,40 +10,36 @@ const Form = ({ onFormSubmit }) => {
     let [keyPressed, setKeyPressed] = useState('')
     let prev = usePrevious(userInput);
     useEffect(() => {
-        console.log(keyPressed)
-        if (prev ||  userInput) {
-            prev.length < userInput.length ? setCurrentIndex(currentIndex + 1) : keyPressed === 'Delete' ?  setCurrentIndex(currentIndex) : setCurrentIndex(currentIndex - 1)
-        }
     }, [userInput])
 
-    let updateInput = (eventType, payload) => {
-        console.log(payload)
+    let updateInput = (eventType,payload) => {
+        console.log(payload.index)
         if (eventType === 'user_input') {
-            setUserInput(payload.value)
-        } else if (eventType === 'user_keypress') {
-            switch (payload.key) {
-                case 'ArrowUp':
-                case 'ArrowLeft':
-                    setCurrentIndex(getSafeNewIndex(currentIndex - 1))
-                    break;
-                case 'ArrowdDown':
-                case 'ArrowRight':
-                    setCurrentIndex(getSafeNewIndex(currentIndex + 1))
-                    break;
-                default:
-                    break;
+            if(payload.value.slice(0,prev.length) !== prev){
+                console.log(payload)
+                console.log(userInput,payload.value[payload.index - 1],payload.index -1)
+                setUserInput(replaceChar(userInput,payload.value[payload.index - 1 ] ,payload.index -1))
+            }else{
+                setUserInput(payload.value)
+                setCurrentIndex(payload.index)
             }
+            
+        } else if (eventType === 'user_keypress') {
+            setCurrentIndex(payload.index)
         }
     }
 
-    let getSafeNewIndex = (newIndex) => {
-        if (newIndex > userInput.length) {
-            return newIndex - 1;
-        } else if (newIndex < 0) {
-            return 0;
-        } else {
-            return newIndex;
-        }
+    // let getSafeNewIndex = (newIndex) => {
+    //     if (newIndex > userInput.length) {
+    //         return newIndex - 1;
+    //     } else if (newIndex < 0) {
+    //         return 0;
+    //     } else {
+    //         return newIndex;
+    //     }
+    // }
+    let replaceChar = (string, char, index) => {
+        return string.slice(0,index) + char + string.slice(index+1,string.length)
     }
     return (
         <S.Form onSubmit={(e) => onFormSubmit(e, userInput)}>

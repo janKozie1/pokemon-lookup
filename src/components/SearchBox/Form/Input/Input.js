@@ -18,8 +18,8 @@ const Input = ({ userInput, updateInput, currentIndex, onKeyPressed }) => {
             maxLength='14'
             ref={inputRef}
             value={userInput}
-            onChange={({ target: { value } }) => updateInput('user_input', { value })}
-            onKeyUp={({ key }) => updateInput('user_keypress', { key,owo:inputRef.current.selectionStart })}
+            onChange={({ target: { value } }) => updateInput('user_input', { value,index:inputRef.current.selectionStart  })}
+            onKeyUp={({ key }) => updateInput('user_keypress', { key,index:inputRef.current.selectionStart })}
             onKeyDown={({ key }) => onKeyPressed(key)}
             onBlur={() => inputRef.current.focus()}
 
