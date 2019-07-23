@@ -8,8 +8,10 @@ const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex }) 
       inputRef.current.focus();
    }, [inputRef])
    useEffect(() => {
+      console.log(currentIndex + " zmiana")
       inputRef.current.setSelectionRange(currentIndex, currentIndex)
    }, [currentIndex])
+   //letter changes -> index doesnt change -> above doesnt run
    return (
       <S.InputContainer>
          {
