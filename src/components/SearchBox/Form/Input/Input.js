@@ -1,17 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import * as S from './styledComponents'
 
-const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex }) => {
+const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex,setIndexUpdated }) => {
    const inputRef = useRef();
-   //console.log(currentIndex)
    useEffect(() => {
       inputRef.current.focus();
    }, [inputRef])
    useEffect(() => {
-      console.log(currentIndex + " zmiana")
       inputRef.current.setSelectionRange(currentIndex, currentIndex)
-   }, [currentIndex])
-   //letter changes -> index doesnt change -> above doesnt run
+      console.log("owo")
+      setIndexUpdated(true);
+
+   }, [currentIndex, userInput])
    return (
       <S.InputContainer>
          {
