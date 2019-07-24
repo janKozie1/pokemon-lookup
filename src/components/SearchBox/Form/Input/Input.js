@@ -8,7 +8,6 @@ const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex,set
    }, [inputRef])
    useEffect(() => {
       inputRef.current.setSelectionRange(currentIndex, currentIndex)
-      console.log("owo")
       setIndexUpdated(true);
 
    }, [currentIndex, userInput])
@@ -27,7 +26,12 @@ const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex,set
             onChange={({ target: { value } }) => {
                updateInput('user_input', { value, index: inputRef.current.selectionStart })
             }}
-            onKeyUp={({ key }) => updateInput('user_keypress', { key, index: inputRef.current.selectionStart})}
+            onKeyUp={(e) => {
+               e.preventDefault();
+               let {key} = e;
+               console.log(inputRef.current.selectionStart)
+               updateInput('user_keypress', { key, index: inputRef.current.selectionStart})
+            }}
             onBlur={() => inputRef.current.focus()}
 
          />

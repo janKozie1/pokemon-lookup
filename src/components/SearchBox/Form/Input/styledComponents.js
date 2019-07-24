@@ -3,9 +3,11 @@ import styled, { keyframes, css } from 'styled-components'
 let blink = keyframes`
     0%, 49.9999%{
         border-color:white;
+        box-shadow:0 0 0 white;
     }
     50%,99.9999%{
         border-color:black;
+        box-shadow:0px 4px 0 #ddd;
     }
 `
 
@@ -34,14 +36,15 @@ export let OneChar = styled.p`
     margin-right:10px;
     font-size:25px;
     border:0;
-
     border-bottom:5px solid rgba(0,0,0,1);
     position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
     outline:none;
+    box-shadow:0px 4px 0 #ddd;
     ${({isFocused}) => isFocused && css`
+    
         animation: ${blink} 1s linear infinite -1s;
     `}
     ${({hidden}) => hidden && css`
