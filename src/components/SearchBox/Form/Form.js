@@ -8,17 +8,18 @@ const Form = ({ onFormSubmit, isLoading }) => {
     let [userInput, setUserInput] = useState("");
     let [currentIndex, setCurrentIndex] = useState(0);
     let [indexUpdated, setIndexUpdated] = useState(true);
+    let [buttonPressed, setButtonPressed] = useState(false);
     let updateInput = (eventType, { value, key, index }) => {
-        
+
         if (eventType === 'user_input' && indexUpdated) {
-            if(userInput.length < 14){
+            if (userInput.length < 14) {
                 if (index <= userInput.length && value.length >= userInput.length) {
                     let char = value[index - 1];
                     setUserInput(replaceChar(userInput, char, index - 1))
                 } else {
                     setUserInput(value)
                 }
-            }else{
+            } else {
                 setUserInput(value)
             }
             setCurrentIndex(index)
@@ -32,9 +33,12 @@ const Form = ({ onFormSubmit, isLoading }) => {
                         setUserInput(replaceChar(userInput, key, index))
                         setCurrentIndex(index + 1)
                     }
+                } else {
+                    setCurrentIndex(index)
                 }
+            } else {
+                setCurrentIndex(index)
             }
-            setCurrentIndex(index)
         }
     }
     let replaceChar = (string, char, index) => {
@@ -54,9 +58,16 @@ const Form = ({ onFormSubmit, isLoading }) => {
                 limit={MAX_LENGTH}
                 setIndexUpdated={setIndexUpdated}
             />
-            <S.SubmitWrapper >
-                <S.Submit type='submit' isLoading={isLoading}>FIND</S.Submit>
-            </S.SubmitWrapper>
+            <S.Submit 
+                type='submit'
+                buttonPressed={buttonPressed} 
+                onMouseDown={() =>{
+                    console.log(buttonPressed)
+                    setButtonPressed(true)
+                } } 
+                onMouseUp={() => setButtonPressed(false)}>
+                    FIND
+            </S.Submit>
         </S.Form>
     );
 }

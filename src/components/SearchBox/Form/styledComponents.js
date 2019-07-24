@@ -57,7 +57,7 @@ export let Submit = styled.button`
     
     
 
-    &::before, &::after{
+    /* &::before, &::after{
         position:absolute;
         content:'';
         height:24px;
@@ -67,7 +67,7 @@ export let Submit = styled.button`
         top:50%;
         transition:transform 0.5s ease-in;
         
-    }
+    } */
     &::before{
         left:0%;
         transform:translate(-380%,-50%) rotate(180deg);
@@ -77,10 +77,11 @@ export let Submit = styled.button`
         right:0%;
         transform:translate(380%,-50%) rotate(-180deg);
     }
-    &:active{
-        transform:translateY(10px);
-    }
-    &:hover{
+    ${props => props.buttonPressed && css`
+        transform:translateY(10px)
+    `}
+   
+    /* &:hover{
         &::before{
             opacity:1;
             transform:translate(-190%,-50%) rotate(360deg)
@@ -89,6 +90,6 @@ export let Submit = styled.button`
             opacity:1;
             transform:translate(190%,-50%)  rotate(-360deg)
         }
-    }
+    } */
 
 `
