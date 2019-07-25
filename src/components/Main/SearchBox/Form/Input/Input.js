@@ -9,7 +9,7 @@ const Input = ({ userInput, updateInput, currentIndex,limit, setCurrentIndex,set
    useEffect(() => {
       inputRef.current.setSelectionRange(currentIndex, currentIndex)
       setIndexUpdated(true);
-
+     // eslint-disable-next-line
    }, [currentIndex, userInput])
    return (
       <S.InputContainer>

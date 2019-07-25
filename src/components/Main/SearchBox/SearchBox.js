@@ -13,7 +13,7 @@ let SearchBox = () =>{
            },
            body:JSON.stringify({query:value.trim()}) 
         }).then(e => e.json()).then((res)=>{
-            console.log(res);
+            console.log(res)
             setIsLoading(false)
         }).catch(err =>{
             console.log(err)

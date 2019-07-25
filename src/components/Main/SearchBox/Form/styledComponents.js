@@ -1,5 +1,5 @@
-import styled,{keyframes, css} from 'styled-components'
-import pokeball from '../../../assets/images/pokeball.png'
+import styled,{ css} from 'styled-components'
+// import pokeball from '../../../assets/images/pokeball.png'
 export let Form = styled.form`
     @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
     font-family:'Press Start 2P';
@@ -21,11 +21,12 @@ export let Form = styled.form`
 export let FormHeader = styled.h1`
 
     text-align:center;
-    font-size:2em;
+    font-size:2.5rem;
     margin:0;
     transition:margin-bottom 0.5s ease-in-out;
     @media only screen and (max-width:577px) {
         line-height:50px;
+        font-size:2.2rem;
         
     }
     span{
@@ -62,7 +63,7 @@ export let Submit = styled.button`
         content:'';
         height:24px;
         width:24px;
-        background:url(${pokeball});
+        background:url();
         background-size:contain;
         top:50%;
         transition:transform 0.5s ease-in;

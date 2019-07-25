@@ -1,21 +1,16 @@
 import React, {Component} from 'react'
-
-import SearchBox from './SearchBox/SearchBox'
+import Main from './Main/Main'
 
 import * as S from './styledComponents'
 
 
 
 class App extends Component {
-    state = { 
-        pokemon:{}
-    }
-    
     render() { 
         return ( 
             <>
                 <S.GlobalStyle />
-                <SearchBox />
+                <Main />
             </>
          );
     }

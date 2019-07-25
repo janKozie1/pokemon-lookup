@@ -62,7 +62,6 @@ const Form = ({ onFormSubmit, isLoading }) => {
                 type='submit'
                 buttonPressed={buttonPressed} 
                 onMouseDown={() =>{
-                    console.log(buttonPressed)
                     setButtonPressed(true)
                 } } 
                 onMouseUp={() => setButtonPressed(false)}>
