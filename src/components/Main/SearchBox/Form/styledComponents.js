@@ -8,13 +8,14 @@ export let Form = styled.form`
     justify-content:space-around;
     position:relative;
     flex-direction:column;
-    flex:1;
     width:100vw;
     height:300px;
-    transition:height 0.5s ease-in-out;
+    padding:60px 0;
+    transition:all 0.5s ease-in-out;
     @media only screen and (max-width:577px) {
-        width:70%;
-        height:600px;
+        width:80%;
+        flex:1;
+        padding:0;
     }
 `
 
@@ -47,7 +48,16 @@ export let SubmitWrapper = styled.div`
 export let Submit = styled.button`
     font-family:inherit;
     background:white;
-    border:5px solid black;
+    border:0;
+    box-shadow: 
+        5px 0 black,
+        0 5px black,
+        -5px 0 black,
+        0 -5px black,
+        -5px 5px #ccc,
+        -5px -5px #ccc,
+        5px 5px #ccc,
+        5px -5px #ccc;
     padding:10px 20px;
     display:flex;
     align-items:center;

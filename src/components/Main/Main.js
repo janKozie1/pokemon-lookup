@@ -8,7 +8,7 @@ let Main = () => {
     let [pokemon, setPokemon] = useState(null) 
     return (
         <S.Main>
-            <SearchBox />
+            <SearchBox setPokemon={setPokemon} />
             {
                 pokemon && <PokemonShowcase pokemon={pokemon} />
             }

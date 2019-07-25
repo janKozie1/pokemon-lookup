@@ -10,7 +10,6 @@ const Form = ({ onFormSubmit, isLoading }) => {
     let [indexUpdated, setIndexUpdated] = useState(true);
     let [buttonPressed, setButtonPressed] = useState(false);
     let updateInput = (eventType, { value, key, index }) => {
-
         if (eventType === 'user_input' && indexUpdated) {
             if (userInput.length < 14) {
                 if (index <= userInput.length && value.length >= userInput.length) {

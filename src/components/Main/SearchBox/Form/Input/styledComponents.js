@@ -19,7 +19,7 @@ export let InputContainer = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     max-width:70%;
-    height:120px;
+    min-height:120px;
     
 `
 export let HiddenInput = styled.input`

@@ -9,7 +9,7 @@ export let SearchBox = styled.div`
     align-items:center;
     width:100vw;
     justify-content:space-around;
-   height:300px;
+    height:400px;
     h1{
         text-align:center;
         font-size:1em;

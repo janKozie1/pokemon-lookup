@@ -1,11 +1,14 @@
 import React from 'react'
 
+import * as S from './styledComponents'
+
 let PokemonShowcase = ({pokemon}) => {
+    console.log(pokemon)
     return (
         pokemon && 
-        <div>
-            haha
-        </div>
+        <S.Pokemon>
+            <S.PokemonIcon src={pokemon.sprites.front_default}  />
+        </S.Pokemon>
         
     )
 }
