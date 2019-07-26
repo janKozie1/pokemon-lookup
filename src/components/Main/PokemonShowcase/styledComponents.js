@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import borderImg from './border.png';
+import borderImg from '../../../assets/images/border.png';
 
 export let Pokemon = styled.div`
-    height:300px;
+    max-width:80%;
     width:300px;
+    height:200px;
     font-family:'Press Start 2P';
-    border-image-source:url(${borderImg});
     border-style: solid;
-    border-width: 16px 16px;
-    border-image: url(${borderImg}) 16 16 fill repeat;
+    border-width: 32px 32px;
+    border-image: url(${borderImg}) 48 48 fill repeat;
     position:relative;
 `
 

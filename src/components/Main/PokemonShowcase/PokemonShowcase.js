@@ -8,7 +8,7 @@ let PokemonShowcase = () => {
     console.log(pokemon)
     return (
         <S.Pokemon>
-            <Spinner size={4} radius={2}/>    
+            <Spinner size={6} radius={2}/>    
         </S.Pokemon>
         
     )

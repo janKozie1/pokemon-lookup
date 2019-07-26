@@ -55,16 +55,6 @@ export let OneChar = styled.p`
     &:disabled{
         background:white;
     }
-    /* &::after{
-        width:5px;
-        height:5px;
-        position:absolute;
-        content:'';
-        background:red;
-        left:5px;
-        bottom:-10px;
-
-    } */
     &:first-of-type{
         &::before{
             content:'';
@@ -116,17 +106,8 @@ export let OneChar = styled.p`
 
                 12px 20px ${pointerShadow},
 
-                8px 24px ${pointerShadow}
-
-                
-                
-                
-                ;
-            
-                
-            
+                8px 24px ${pointerShadow};        
             top:0px;
-            /* clip-path:polygon(0% 0% , 50% 0% , 100% 50%, 50% 100% , 0% 100%); */
             transform:translate(-45px,6px);
         }
     }
