@@ -1,14 +1,14 @@
 import React from 'react'
 
 import * as S from './styledComponents'
+import Spinner from '../../Spinner/Spinner'
 import {dummy} from './dummyPokemon'
 let PokemonShowcase = () => {
     let pokemon = dummy;
     console.log(pokemon)
     return (
         <S.Pokemon>
-            <S.Loader />
-            
+            <Spinner size={4} radius={2}/>    
         </S.Pokemon>
         
     )
