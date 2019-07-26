@@ -10,7 +10,8 @@ let Main = () => {
         <S.Main>
             <SearchBox setPokemon={setPokemon} />
             {
-                pokemon && <PokemonShowcase pokemon={pokemon} />
+                // pokemon && <PokemonShowcase pokemon={pokemon} />
+                <PokemonShowcase />
             }
         </S.Main>
     )

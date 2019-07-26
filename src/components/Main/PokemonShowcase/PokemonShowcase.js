@@ -1,13 +1,14 @@
 import React from 'react'
 
 import * as S from './styledComponents'
-
-let PokemonShowcase = ({pokemon}) => {
+import {dummy} from './dummyPokemon'
+let PokemonShowcase = () => {
+    let pokemon = dummy;
     console.log(pokemon)
     return (
-        pokemon && 
         <S.Pokemon>
-            <S.PokemonIcon src={pokemon.sprites.front_default}  />
+            <S.Loader />
+            
         </S.Pokemon>
         
     )
