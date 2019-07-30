@@ -12,6 +12,7 @@ let blink = keyframes`
     }
 `
 
+
 export let InputContainer = styled.div`
     position:relative;
     display:flex;
@@ -22,45 +23,54 @@ export let InputContainer = styled.div`
     min-height:120px;
     
 `
+
+
 export let HiddenInput = styled.input`
     position:absolute;
     z-index:1;
     bottom:0;
     transform:scale(0);
 `
+
+
 export let OneChar = styled.p`
-    transition:all 0.5s ease-in-out;
-    background:white;
     height:30px;
     width:30px;
+    
     margin:0;
     margin-right:10px;
-    font-size:25px;
     border:0;
     border-bottom:5px solid rgba(0,0,0,1);
+
     position:relative;
+    z-index:10;
     display:flex;
     align-items:center;
     justify-content:center;
-    outline:none;
+
+    font-size:25px;
+
+    transition:all 0.5s ease-in-out;
+
+    background:white;
     box-shadow:0px 4px 0 ${letterShadow};
+   
     ${({isFocused}) => isFocused && css`
-    
         animation: ${blink} 1s linear infinite -1s;
     `}
     ${({hidden}) => hidden && css`
         display:none;
     `}
-    z-index:10;
-    &:disabled{
-        background:white;
-    }
+    
     &:first-of-type{
         &::before{
             content:'';
             width:4px;
             height:4px;
             position:absolute;
+            top:0px;
+            transform:translate(-45px,6px);
+            
             background:black;
             box-shadow:
                 /*down*/
@@ -107,8 +117,7 @@ export let OneChar = styled.p`
                 12px 20px ${pointerShadow},
 
                 8px 24px ${pointerShadow};        
-            top:0px;
-            transform:translate(-45px,6px);
+            
         }
     }
     &:nth-of-type(16){

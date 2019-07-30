@@ -22,7 +22,7 @@ let Main = () => {
             <SearchBox setQuery={setQuery}/>
             {
                 // pokemon && <PokemonShowcase pokemon={pokemon} />
-                <PokemonShowcase pokemon={pokemon} error={error}/>
+                <PokemonShowcase pokemon={pokemon} error={error} isLoading={isLoading}/>
             }
         </S.Main>
     )

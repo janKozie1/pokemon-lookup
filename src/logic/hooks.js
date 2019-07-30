@@ -1,5 +1,5 @@
 import  { useState, useRef, useEffect } from 'react'
-import {handleBadCode} from './functions'
+import {checkResponseStatus} from './functions'
 export let usePrevious = (val) => {
     let ref = useRef()
     useEffect(()=>{
@@ -17,14 +17,24 @@ export let useFetch = (url, params, query) => {
         let fetchData =  (url,params,query) => {
             setIsLoading(true)
             fetch(url,{...params,body:JSON.stringify({query})})
-                .then(handleBadCode)
+                .then(checkResponseStatus)
                     .then(res => res.json())
-                        .then(setResponse)  
-            .catch(setError)
-            setIsLoading(false)
+                        .then(e=>{
+                            setResponse(e);
+                            setIsLoading(false);
+                        })  
+            .catch(err=>{
+                setError(err)
+                setIsLoading(false)
+            })
         }
         if(url && query)
             fetchData(url,params,query)
     },[query])
     return [response,error,isLoading]
+}
+
+
+export let usePokemon = (name) => {
+   
 }
