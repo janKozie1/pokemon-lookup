@@ -45,11 +45,9 @@ export let SubmitWrapper = styled.div`
   
 `
 
-export let Submit = styled.button`
-    font-family:inherit;
-    background:white;
-    border:0;
-    box-shadow: 
+
+let defaultShadows = () =>{
+    return `
         5px 0 black,
         0 5px black,
         -5px 0 black,
@@ -57,7 +55,17 @@ export let Submit = styled.button`
         -5px 5px #ccc,
         -5px -5px #ccc,
         5px 5px #ccc,
-        5px -5px #ccc;
+        5px -5px #ccc
+    `
+}
+
+export let Submit = styled.button`
+    height:33px;
+    box-sizing:border-box;
+    font-family:inherit;
+    background:white;
+    border:0;
+    box-shadow:${defaultShadows()};
     padding:10px 20px;
     display:flex;
     align-items:center;
@@ -66,19 +74,6 @@ export let Submit = styled.button`
     position:relative;
     cursor:pointer;
     
-    
-
-    /* &::before, &::after{
-        position:absolute;
-        content:'';
-        height:24px;
-        width:24px;
-        background:url();
-        background-size:contain;
-        top:50%;
-        transition:transform 0.5s ease-in;
-        
-    } */
     &::before{
         left:0%;
         transform:translate(-380%,-50%) rotate(180deg);
@@ -89,18 +84,12 @@ export let Submit = styled.button`
         transform:translate(380%,-50%) rotate(-180deg);
     }
     ${props => props.buttonPressed && css`
-        transform:translateY(10px)
+        background:#ccc;
+        padding-top:15px;
+        box-shadow:
+            ${defaultShadows()},
+            inset 0px 5px 0 black;
     `}
-   
-    /* &:hover{
-        &::before{
-            opacity:1;
-            transform:translate(-190%,-50%) rotate(360deg)
-        }
-        &::after{
-            opacity:1;
-            transform:translate(190%,-50%)  rotate(-360deg)
-        }
-    } */
-
 `
+
+

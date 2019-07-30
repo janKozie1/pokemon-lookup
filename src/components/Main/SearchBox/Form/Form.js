@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Input from './Input/Input'
 import * as S from './styledComponents'
 
-const MAX_LENGTH = 14;
+const MAX_LENGTH = 14
 
 const Form = ({ onFormSubmit, isLoading }) => {
-    let [userInput, setUserInput] = useState("");
-    let [currentIndex, setCurrentIndex] = useState(0);
-    let [indexUpdated, setIndexUpdated] = useState(true);
-    let [buttonPressed, setButtonPressed] = useState(false);
+    let [userInput, setUserInput] = useState("")
+    let [currentIndex, setCurrentIndex] = useState(0)
+    let [indexUpdated, setIndexUpdated] = useState(true)
+    let [buttonPressed, setButtonPressed] = useState(false)
     let updateInput = (eventType, { value, key, index }) => {
         if (eventType === 'user_input' && indexUpdated) {
             if (userInput.length < 14) {
                 if (index <= userInput.length && value.length >= userInput.length) {
-                    let char = value[index - 1];
+                    let char = value[index - 1]
                     setUserInput(replaceChar(userInput, char, index - 1))
                 } else {
                     setUserInput(value)
@@ -41,7 +41,7 @@ const Form = ({ onFormSubmit, isLoading }) => {
         }
     }
     let replaceChar = (string, char, index) => {
-        let newValue = string.slice(0, index) + char + string.slice(index + 1, string.length);
+        let newValue = string.slice(0, index) + char + string.slice(index + 1, string.length)
         if (newValue !== userInput)
             setIndexUpdated(false)
         return newValue
@@ -67,7 +67,7 @@ const Form = ({ onFormSubmit, isLoading }) => {
                     FIND
             </S.Submit>
         </S.Form>
-    );
+    )
 }
 
-export default Form;
+export default Form

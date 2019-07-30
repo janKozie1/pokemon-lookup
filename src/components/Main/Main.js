@@ -6,9 +6,10 @@ import * as S from './styledComponents'
 
 let Main = () => {
     let [pokemon, setPokemon] = useState(null) 
+    let [error, setError] = useState(null) 
     return (
         <S.Main>
-            <SearchBox setPokemon={setPokemon} />
+            <SearchBox setPokemon={setPokemon} setError={setError} />
             {
                 // pokemon && <PokemonShowcase pokemon={pokemon} />
                 <PokemonShowcase />
