@@ -4,15 +4,25 @@ import PokemonShowcase from './PokemonShowcase/PokemonShowcase'
 
 import * as S from './styledComponents'
 
+import {useFetch} from '../../logic/hooks'
+
+const URL = 'http://127.0.0.1:8080/getPokemon';
+const PARAMS = {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json'
+    },
+}
+
 let Main = () => {
-    let [pokemon, setPokemon] = useState(null) 
-    let [error, setError] = useState(null) 
+    let [query, setQuery] = useState(null)
+    let [pokemon,error,isLoading] = useFetch(URL,PARAMS,query) 
     return (
         <S.Main>
-            <SearchBox setPokemon={setPokemon} setError={setError} />
+            <SearchBox setQuery={setQuery}/>
             {
                 // pokemon && <PokemonShowcase pokemon={pokemon} />
-                <PokemonShowcase />
+                <PokemonShowcase pokemon={pokemon} error={error}/>
             }
         </S.Main>
     )

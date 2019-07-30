@@ -1,5 +1,5 @@
 import  { useState, useRef, useEffect } from 'react'
-
+import {handleBadCode} from './functions'
 export let usePrevious = (val) => {
     let ref = useRef()
     useEffect(()=>{
@@ -14,18 +14,15 @@ export let useFetch = (url, params, query) => {
     let [error, setError] = useState(null)
     
     useEffect(()=>{
-        let fetchData = async(url,params,query) => {
+        let fetchData =  (url,params,query) => {
             setIsLoading(true)
-            try{
-                let res = await fetch(url,{...params,body:JSON.stringify(query)})
-                let parsed = await res.json()
-                setResponse(parsed) 
-            }catch(err){
-                setError(err)
-            }
+            fetch(url,{...params,body:JSON.stringify({query})})
+                .then(handleBadCode)
+                    .then(res => res.json())
+                        .then(setResponse)  
+            .catch(setError)
             setIsLoading(false)
         }
-        console.log(url,query)
         if(url && query)
             fetchData(url,params,query)
     },[query])

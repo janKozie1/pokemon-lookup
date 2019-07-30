@@ -36,15 +36,6 @@ export let FormHeader = styled.h1`
     
 `
 
-export let SubmitWrapper = styled.div`
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:200px;
-    background:white;
-  
-`
-
 
 let defaultShadows = () =>{
     return `
@@ -84,7 +75,7 @@ export let Submit = styled.button`
         transform:translate(380%,-50%) rotate(-180deg);
     }
     ${props => props.buttonPressed && css`
-        background:#ccc;
+       
         padding-top:15px;
         box-shadow:
             ${defaultShadows()},

@@ -4,7 +4,7 @@ import * as S from './styledComponents'
 
 const MAX_LENGTH = 14
 
-const Form = ({ onFormSubmit, isLoading }) => {
+const Form = ({ onFormSubmit}) => {
     let [userInput, setUserInput] = useState("")
     let [currentIndex, setCurrentIndex] = useState(0)
     let [indexUpdated, setIndexUpdated] = useState(true)

@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/getPokemon', (req,res)=>{
     console.log(req.body.query)
     axios.get(`http://pokeapi.co/api/v2/pokemon/${req.body.query}`)
-        .then(({ data }) => {
-            res.json(data)
+        .then(({data}) => {
+            res.json({data})
         })
         .catch((error) => {
             // Error 😨
@@ -20,7 +20,7 @@ app.post('/getPokemon', (req,res)=>{
                  * The request was made and the server responded with a
                  * status code that falls out of the range of 2xx
                  */
-                res.json({data:error.response.data,status:error.response.status})
+                res.sendStatus(error.response.status)
             } else if (error.request) {
                 /*
                  * The request was made but no response was received, `error.request`

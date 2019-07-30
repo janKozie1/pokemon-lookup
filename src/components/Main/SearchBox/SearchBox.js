@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Form from './Form/Form'
 
-import { useFetch } from '../../../logic/hooks'
 
-let SearchBox = ({ setPokemon, setError }) => {
-    let [query, setQuery] = useState(null)
-    let [pokemon, error, isLoading] = useFetch(`http://127.0.0.1:8080/getPokemon`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    }, query)
-
+let SearchBox = ({ setQuery }) => {
     let onFormSubmit = (e, userInput) => {
         e.preventDefault()
-        setQuery(userInput.trim())
+        let parsed = userInput.trim();
+        if(parsed)
+            setQuery(parsed)
     }
-    useEffect(() => {
-        console.log(pokemon,error)
-        if (pokemon) {
-            setPokemon(pokemon)
-        } else if (error) {
-            setError(error)
-        }
-    }, [pokemon, error])
     return (
-        <Form onFormSubmit={onFormSubmit} isLoading={isLoading} />
+        <Form 
+            onFormSubmit={onFormSubmit}  
+        />
     )
 }
 
