@@ -1,7 +1,7 @@
 import styled,{ css} from 'styled-components'
 // import pokeball from '../../../assets/images/pokeball.png'
 export let Form = styled.form`
-    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
     width:100vw;
     height:300px;
     padding:60px 0;
@@ -10,7 +10,6 @@ export let Form = styled.form`
     align-items:center;
     justify-content:space-around;
     position:relative;
-    font-family:'Press Start 2P';
     transition:all 0.5s ease-in-out;
     @media only screen and (max-width:577px) {
         width:80%;

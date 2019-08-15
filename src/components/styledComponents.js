@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
 export let GlobalStyle = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
     html{
         height:100%;
+        font-family:'Press Start 2P';
     }
     body{
         min-height:100%;

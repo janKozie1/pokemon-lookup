@@ -1,5 +1,5 @@
 import  { useState, useRef, useEffect } from 'react'
-import {checkResponseStatus} from './functions'
+import {checkResponseStatus, getErrorMessage} from './functions'
 export let usePrevious = (val) => {
     let ref = useRef()
     useEffect(()=>{
@@ -24,7 +24,7 @@ export let useFetch = (url, params, query) => {
                             setIsLoading(false);
                         })  
             .catch(err=>{
-                setError(err)
+                setError(getErrorMessage(err))
                 setIsLoading(false)
             })
         }
