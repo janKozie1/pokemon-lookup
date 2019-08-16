@@ -4,7 +4,7 @@ export let Form = styled.form`
 
     width:100vw;
     height:300px;
-    padding:60px 0;
+    margin-top:60px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -58,13 +58,13 @@ export let Submit = styled.button`
         right:0%;
         transform:translate(380%,-50%) rotate(-180deg);
     }
-    
-    ${props => props.buttonPressed && css`
+    &:active{
         padding-top:15px;
         box-shadow:
             ${defaultShadows()},
             inset 0px 5px 0 black;
-    `}
+    }
+    
 `
 
 

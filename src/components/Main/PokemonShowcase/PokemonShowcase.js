@@ -1,25 +1,33 @@
 import React from 'react'
 import * as S from './styledComponents'
 import Spinner from '../../Spinner/Spinner'
-import { dummy } from './dummyPokemon'
+
 let PokemonShowcase = ({ pokemon, error, isLoading }) => {
-    //let pokemon = dummy;
-    console.log(pokemon, error, isLoading)
     let getContent = () => {
         if (isLoading) {
             return <Spinner size={6} radius={2} />
-        }else if(pokemon) {
-            return createPokemon()
+        } else if (pokemon) {
+            return createPokemon(pokemon)
         } else if (error) {
             return <S.Message>{error}</S.Message>
-        } 
+        }
     }
 
-    let createPokemon = () => {
-      
+    let createPokemon = ({ data }) => {
+        console.log(data)
         return (
             <S.Pokemon>
-                <S.PokemonIcon image={pokemon.data.sprites.front_default}/>
+                <S.PokemonIcon image={data.sprites.front_default} />
+                <S.PokemonHeader>
+                    <h3>{data.name} <span>#{data.id}</span></h3>
+                    <S.Types>
+                        {data.types.map(({ type: { name } }) => {
+                            return <S.Type key={name} type={name}>{name}</S.Type>
+                        })}
+                    </S.Types>
+
+                </S.PokemonHeader>
+
             </S.Pokemon>
         )
     }

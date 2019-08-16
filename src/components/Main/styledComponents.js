@@ -5,6 +5,6 @@ export let Main = styled.main`
     height:100vh;
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     flex-direction:column;
 `

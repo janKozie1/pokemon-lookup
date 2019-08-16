@@ -25,6 +25,7 @@ export let useFetch = (url, params, query) => {
                         })  
             .catch(err=>{
                 setError(getErrorMessage(err))
+                setResponse(null);
                 setIsLoading(false)
             })
         }
