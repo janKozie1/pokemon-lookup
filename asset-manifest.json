@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/pokemon-lookup/static/js/main.11ec90a9.chunk.js",
+    "main.js.map": "/pokemon-lookup/static/js/main.11ec90a9.chunk.js.map",
+    "runtime~main.js": "/pokemon-lookup/static/js/runtime~main.ed3e6c9a.js",
+    "runtime~main.js.map": "/pokemon-lookup/static/js/runtime~main.ed3e6c9a.js.map",
+    "static/js/2.2684d34d.chunk.js": "/pokemon-lookup/static/js/2.2684d34d.chunk.js",
+    "static/js/2.2684d34d.chunk.js.map": "/pokemon-lookup/static/js/2.2684d34d.chunk.js.map",
+    "index.html": "/pokemon-lookup/index.html",
+    "precache-manifest.9a2f2dc92783998832db2486e525990c.js": "/pokemon-lookup/precache-manifest.9a2f2dc92783998832db2486e525990c.js",
+    "service-worker.js": "/pokemon-lookup/service-worker.js"
+  }
+}
